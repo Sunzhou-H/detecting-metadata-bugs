@@ -1,1 +1,4 @@
 /bin/
+artifact-submission/logs.txt
+artifact-submission/output/
+.settings/

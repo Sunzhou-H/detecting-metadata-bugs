@@ -4,7 +4,7 @@
 
 - Java version: 11 or higher (preferably 15)
 - Maven
-- OS: Windows
+- OS: Windows or Linux(preferably Ubuntu)
 - No additional dependencies (no external libraries or build tools required)
 
 ## Input Files

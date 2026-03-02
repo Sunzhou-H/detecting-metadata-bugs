@@ -48,9 +48,9 @@ public class XMLHelper {
         File[] files = new File(folder).listFiles();
         if (files != null && files.length > 0) {
             for (File currFile : files) {
-                String fullPath = folder + "\\" + currFile.getName().toString();
+                String fullPath = new File(folder, currFile.getName()).getPath();
                 if (currFile.isDirectory()) {
-                    this.loadXMLFiles(fullPath.toString());
+                    this.loadXMLFiles(fullPath);
                 } else {
                     if (currFile.getName().endsWith(Constants.EXTENSION_XML))
                         if (EngineFactory.getEngineVersionControl().isNonIgnoredFile(fullPath))

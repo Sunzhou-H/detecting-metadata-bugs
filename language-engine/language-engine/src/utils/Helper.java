@@ -382,23 +382,23 @@ public class Helper {
      * @param commitId
      */
     public static void gitCheckout(String projectPath, String commitId) {
-        ProcessBuilder processBuilder = new ProcessBuilder();
+        ProcessBuilder processBuilder = new ProcessBuilder("git", "checkout", commitId);
         processBuilder.directory(new File(projectPath));
-        processBuilder.command("cmd", "/c", "git checkout " + commitId);
+        processBuilder.redirectErrorStream(true);
+        processBuilder.inheritIO();
 
-        int exitCode;
         try {
             Process process = processBuilder.start();
-            exitCode = process.waitFor();
+            int exitCode = process.waitFor();
             System.out.println("Checked out version: "
                     + commitId + " of project: " + projectPath + " with Exit code: "
                     + exitCode);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
-
     }
 
     /***
